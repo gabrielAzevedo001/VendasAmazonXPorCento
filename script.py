@@ -43,6 +43,11 @@ print(resultado_categorias.to_string())
 # Exibe os produtos com maior número de avaliações em cada categoria em ordem alfabética na interface do Streamlit
 st.write("Produtos com maior número de avaliações agrupados em cada categoria em ordem alfabética: ")
 st.dataframe(resultado_categorias.head(10))
+st.write("Obs: como não tem nenhuma coluna que indique o número de vendas com o preço com desconto ou sem"
+         "desconto, usei o número de avaliações como um número mínimo de vendas de cada produto. Multipliquei"
+         "o valor de cada produto com desconto e sem desconto com o número de avaliações para ter mais"
+         "ou menos uma noção de lucro se todas as pessoas tivessem comprado com desconto ou sem desconto. "
+         "Criei as colunas renda_com_desconto e renda_sem_desconto para representar esses dados.")
 
 # Cria um gráfico de barras utilizando Seaborn para visualizar os produtos com maior número de avaliações em cada categoria
 sns.barplot(data=resultado_categorias.head(10), x='main_category', y='no_of_ratings')
