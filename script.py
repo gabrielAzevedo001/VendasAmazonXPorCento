@@ -50,7 +50,10 @@ st.write("Obs: como não tem nenhuma coluna que indique o número de vendas com 
          "Criei as colunas renda_com_desconto e renda_sem_desconto para representar esses dados.")
 
 # Cria um gráfico de barras utilizando Seaborn para visualizar os produtos com maior número de avaliações em cada categoria
-sns.barplot(data=resultado_categorias.head(10), x='main_category', y='no_of_ratings')
+st.write("Produtos com maior número de avaliações em cada categoria de maneira decrescente: ")
+st.set_option('deprecation.showPyplotGlobalUse', False) #Removendo qualquer mensagem de aviso do Streamlit de funções deprecated
+resultado_ordenado_categorias = resultado_categorias.sort_values(by='no_of_ratings', ascending=False).reset_index(drop=True)
+sns.barplot(data=resultado_ordenado_categorias.head(10), x='main_category', y='no_of_ratings')
 plt.xticks(rotation=80)  # Rotaciona os rótulos do eixo x para facilitar a leitura
 st.pyplot()  # Exibe o gráfico na interface do Streamlit
 
